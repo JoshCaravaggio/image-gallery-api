@@ -12,30 +12,22 @@
 )
 =end
 
-Image.create(
-    :source_url =>  'https://cdn.shopify.com/s/files/1/0074/6396/0633/files/RestoreHyperWellness.jpeg?v=1588439720', 
-    :metadata => 'test metadata', 
-    :description => 'Restore Hyperwellness Custom Sign', 
-    :index => 1, 
-    :gallery_id => 1)
-Image.create(
-    :source_url => 'https://cdn.shopify.com/s/files/1/0074/6396/0633/files/corsair.jpeg?v=1588439718', 
-    :description => 'Corsair', 
-    :metadata => '', 
-    :index => 2,
-    :gallery_id => 1    
-    )
-Image.create(
-    :source_url => 'https://cdn.shopify.com/s/files/1/0074/6396/0633/files/rredbeat.jpeg?v=1588439715', 
-    :description => 'rredbeat', 
-    :metadata => '', 
-    :index => 3,
-    :gallery_id => 1    
-    )
-Image.create(
-    :source_url => 'https://cdn.shopify.com/s/files/1/0074/6396/0633/files/TailoredCoachingMethod.jpeg?v=1588439711', 
-    :description => 'Tailored coaching method',
-    :metadata =>'', 
-    :index => 4, 
-    :gallery_id => 1
-    )
+File.open(Rails.root.join('db','images.txt'), "r") do |file_handle|
+    counter = 0
+    file_handle.each_line do |imageLine|    
+
+        splitString = imageLine.split("\\\"")
+        imageSource = splitString[1]
+        imageName = imageSource.split("files/")[2].split(".")[0]
+        
+        Image.create(
+            :source_url =>  imageSource, 
+            :metadata => '', 
+            :description => imageName, 
+            :index => counter, 
+            :gallery_id => 1)   
+        puts "Image created with name: #{imageName} and source: #{imageSource}"
+
+        counter = counter + 1
+    end
+end
