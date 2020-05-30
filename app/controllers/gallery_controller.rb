@@ -1,5 +1,6 @@
 class GalleryController < ApplicationController
 
+
     def get_gallery
 
         response = {"images" => Image.all}  
@@ -7,3 +8,5 @@ class GalleryController < ApplicationController
  
     end 
 end
+
+

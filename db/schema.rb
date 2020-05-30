@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_22_023455) do
+ActiveRecord::Schema.define(version: 2020_05_22_140921) do
+
+  create_table "galleries", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.text "description"
+    t.string "title"
+  end
 
   create_table "images", force: :cascade do |t|
     t.text "source_url"
@@ -19,6 +26,8 @@ ActiveRecord::Schema.define(version: 2020_05_22_023455) do
     t.string "description"
     t.string "metadata"
     t.integer "index"
+    t.integer "gallery_id"
+    t.index ["gallery_id"], name: "index_gallery_id"
   end
 
 end
