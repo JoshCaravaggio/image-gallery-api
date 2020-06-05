@@ -11,6 +11,14 @@ class GalleryController < ApplicationController
         end 
     end
 
+
+    def get_all_images
+
+        response = Image.take(50)
+        render :json => response      
+
+    end
+
 end
 
 
