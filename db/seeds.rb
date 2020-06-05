@@ -5,12 +5,12 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-=begin 
-    Gallery.create(
+
+ogGallery = Gallery.create(
 :title => "Custom Neon Gallery",     
 :description => "The Neon X custom neon gallery"
 )
-=end
+
 
 File.open(Rails.root.join('db','images.txt'), "r") do |file_handle|
     counter = 0
@@ -25,9 +25,11 @@ File.open(Rails.root.join('db','images.txt'), "r") do |file_handle|
             :metadata => '', 
             :description => imageName, 
             :index => counter, 
-            :gallery_id => 1)   
+            :gallery_id => ogGallery.id)   
+            
         puts "Image created with name: #{imageName} and source: #{imageSource}"
-
         counter = counter + 1
+
     end
 end
+
