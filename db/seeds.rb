@@ -11,6 +11,7 @@ ogGallery = Gallery.create(
 :description => "The Neon X custom neon gallery"
 )
 
+Client.create(:client_key => '0665151314', :password => '0665151314', :password_confirmation => '0665151314', :password_digest => '0665151314')
 
 File.open(Rails.root.join('db','images.txt'), "r") do |file_handle|
     counter = 0

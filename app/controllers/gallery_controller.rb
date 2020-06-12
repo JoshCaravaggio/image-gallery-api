@@ -22,3 +22,4 @@ class GalleryController < ApplicationController
 end
 
 
+    

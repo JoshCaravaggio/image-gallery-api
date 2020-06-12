@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_22_140921) do
+ActiveRecord::Schema.define(version: 2020_06_12_015831) do
+
+  create_table "clients", force: :cascade do |t|
+    t.string "client_key"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "password_digest"
+    t.string "password"
+    t.string "password_confirmation"
+  end
 
   create_table "galleries", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false

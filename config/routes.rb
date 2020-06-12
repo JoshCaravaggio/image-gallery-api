@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  post 'authenticate', to: 'authentication#authenticate'
+
   get 'gallery', to: "gallery#get_gallery"
   get 'all_images', to: "gallery#get_all_images"
 
