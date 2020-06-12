@@ -3,8 +3,7 @@ class AuthenticationController < ApplicationController
    
     def authenticate
     
-        puts "Client key passed in: #{params[:client_key]}"
-      command = AuthenticateClient.call(params[:client_key])
+        command = AuthenticateClient.call(params[:client_key])
    
       if command.success?
         render json: { auth_token: command.result }
